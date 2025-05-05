@@ -22,20 +22,28 @@ int main() {
 
     while (choice == 'Y' || choice == 'y') {
         Puzzle puzzle;
+
+        // Ask the user to choose a puzzle type
         printIntro();
 
         int inputType;
         cin >> inputType;
 
+        // Default puzzle
         if (inputType == 1) {
             puzzle.loadDefault();
-        } else {
-            while (!puzzle.loadFromInput()) {
+        } else { // Custom Puzzle
+            // Check if the custom puzzle is valid
+            while (!puzzle.loadFromInput()) { 
+                // return invalid puzzle message if not
                 cout << "Invalid puzzle. Please try again.\n";
             }
         }
 
+        // Print the Initial / Current Puzzle State
         puzzle.printState();
+
+        // Ask the user to choose a search algorithm
         printAlgorithmMenu();
 
         int algo;
@@ -44,7 +52,7 @@ int main() {
 
         Solver solver(puzzle, type);
         solver.solve();
-        solver.printSummary();
+        // solver.printSummary();
 
         cout << "\nWould you like to play again? (Y/y = Yes, N/n = No): ";
         cin >> choice;

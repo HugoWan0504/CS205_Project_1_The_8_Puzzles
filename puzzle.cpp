@@ -1,6 +1,6 @@
 #include "puzzle.h"
 
-// 3x3 grid puzzle
+// 8-puzzle is a 3x3 grid puzzle
 Puzzle::Puzzle() {
     state = vector<vector<int>>(3, vector<int>(3, 0));
 }
@@ -17,10 +17,13 @@ void Puzzle::loadDefault() {
 
 // making sure the custom puzzle numbers are valid
 bool Puzzle::isValid(const vector<int>& flatInput) const {
+    // 9 digits, 1 to 8, including 0 as the blank block
     if (flatInput.size() != 9) return false;
 
     unordered_set<int> seen;
     for (int num : flatInput) {
+        // return invalid if found a number is 
+        // lower than 0 or more than 8 or duplicated
         if (num < 0 || num > 8 || seen.count(num)) return false;
         seen.insert(num);
     }
@@ -31,6 +34,7 @@ bool Puzzle::isValid(const vector<int>& flatInput) const {
 bool Puzzle::loadFromInput() {
     cout << "Enter your puzzle row-by-row (use 0 for blank):\n";
 
+    // log user's inputs of the rows
     vector<int> flatInput;
     for (int i = 0; i < 3; ++i) {
         cout << "Row " << (i + 1) << ": ";
@@ -46,6 +50,7 @@ bool Puzzle::loadFromInput() {
 
     if (!isValid(flatInput)) return false;
 
+    // converts the flat inputs into a 3x3 grid
     state.clear();
     for (int i = 0; i < 3; ++i) {
         vector<int> row(flatInput.begin() + i * 3, flatInput.begin() + (i + 1) * 3);
@@ -54,7 +59,7 @@ bool Puzzle::loadFromInput() {
     return true;
 }
 
-// show puzzle state with values
+// log puzzle block states with input
 void Puzzle::printState() const {
     cout << "\nPuzzle state:\n";
     for (const auto& row : state) {

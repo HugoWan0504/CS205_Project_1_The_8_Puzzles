@@ -15,7 +15,7 @@ class Solver {
 public:
     Solver(const Puzzle& puzzle, SearchType type);
     void solve();
-    void printSummary() const;
+    // void printSummary() const;
 
 private:
     Puzzle puzzle;
