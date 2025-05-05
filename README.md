@@ -8,14 +8,54 @@
 * Traceback page(s): ? page
 
 
-### How to play? (1st Draft)
+### How to play?
+
+# 1. Getting Started
 * Open terminal and compile the code using the following command: g++ -o eight_puzzle main.cpp
 * Run the program with: ./eight_puzzle
-* The interface will show up for users to choose where they want to play a default eight-puzzle or a custom eight-puzzle.
-* Default eight-puzzle is easy and coded for the functionalities of the game. A custom eight-puzzle allows the users to enter numbers from 0 to 8, three numbers in each row (3 total rows) of their created puzzles.
-* The puzzle can only start if the numbers were vaild (All numbers are presented on the puzzle). 
-* If the numbers on the puzzle is invalid, it will output the invalid game message and restart the game. The game is invalid if there are more than one of each number from 0 to 8 presented on the puzzle, means that all number can only appears once in each game.
-* After choosing the puzzle to play, the users will then see an interface that asks the users which algorithms they want to use to solve their chosen puzzles. 
-* The choices are:  1. Uniform Cost Search  2. A* with the Misplaced Tile heuristic  3. A* with the Manhattan Distance heuristic
-* Then, the terminal will output each step with the corresponding algorithm and evenutally get the solved puzzle of the eight-puzzle. Also, they will get the depth of the solution, the numbers of the modes expanded, and the max queue size of each game.
-* Finally, when the game ends, it will ask the users in the terminal whether they want to start another game or end program. Enter "Y/y" to restart game; enter "N/n" to end the program.
+
+# 2. Interface - Choosing a Puzzle
+* After running the program, the terminal will prompt users to select between these two puzzle methods:
+* 1. Default 8-puzzle, coded for simple testings and demostration.
+* 2. Custom 8-puzzle, allow users to create their own puzzles by manually entering the numbers in each row. 
+* For the custom puzzle, the user must input three rows with three numbers each, using the digits 0 to 8, where 0 represents the blank tile.
+
+# 3. Rules for Valid Puzzle Input
+* Puzzle is only valid under these conditions:
+* 1. The puzzle must include all numbers from 0 to 8 exactly once.
+* 2. When entering the numbers, each row should have exactly three values, and the number inputs must be separated by spaces.
+* A valid puzzle should look like this:
+  - Enter the first row: 1 2 3
+  - Enter the second row: 4 5 0
+  - Enter the third row: 6 7 8
+* If the input does NOT meet these requirements, it will be considered invalid, which the program will print an "Invalid Puzzle" message and restart the setup process.
+* Here are the example of invalid puzzles:
+ - Missing a number: no 0
+ - Duplicated numbers: two 3's
+ - Fewer or more than 9 total digits (< 0 or > 8)
+
+# 4. Interface - Choosing a Search Algorithm
+* After creating a valid puzzle, the program will prompt users to select a search strategy in the terminal:
+* 1. Uniform Cose Search (UCS)
+* 2. A* with the Misplaced Tile heuristic (AMT)
+* 3. A* with the Manhattan Distance heuristic (AMD)
+* Each algorithm will attempt to find the optimal path from the initial puzzle state to the goal state
+
+
+# 5. Output Format and Game Result
+* During execution, the program will display:
+* 1. The best puzzle state chosen to expand at each step
+* 2. The corresponding values of g(n), h(n), and f(n) for A*-based searches
+* 3. The final goal state, which is unified and look like this:
+  - The first row: 1 2 3
+  - The second row: 4 5 6
+  - The third row: 7 8 0
+* At the end of the game, users will see a summary including:
+* 1. Solution depth (number of moves from initial to goal)
+* 2. Total number of nodes expanded
+* 3. Maximum queue size during the search process
+
+# 6. Restart or Exit
+* After solving the puzzle, the terminal will prompt:
+ - "Would you like to play again?"
+ - "Enter 'Y' or 'y' to restart, 'N' or 'n' to exit."
