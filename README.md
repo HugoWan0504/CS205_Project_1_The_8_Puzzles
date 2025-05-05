@@ -1,12 +1,8 @@
-# CS205_Project_1_The_8_Puzzles
+# CS205 Project 1 The 8 Puzzles by Hugo Wan, 862180666, twan012
 
 ### Content
 * PDF report: (link, add in later)
-* Cover page: 1st page 
-* Summary Report page(s): ? page
-* Coding page(s): ? page
-* Traceback page(s): ? page
-
+* Current github link: https://github.com/HugoWan0504/CS205_Project_1_The_8_Puzzles
 
 ### How to play?
 
@@ -26,7 +22,7 @@
 * 2. When entering the numbers, each row should have exactly three values, and the number inputs must be separated by spaces.
 * A valid puzzle should look like this:
   - Enter the first row: 1 2 3
-  - Enter the second row: 4 5 0
+  - Enter the second row: 4 0 5
   - Enter the third row: 6 7 8
 * If the input does NOT meet these requirements, it will be considered invalid, which the program will print an "Invalid Puzzle" message and restart the setup process.
 * Here are the example of invalid puzzles:
@@ -57,5 +53,5 @@
 
 # 6. Restart or Exit
 * After solving the puzzle, the terminal will prompt:
- - "Would you like to play again?"
- - "Enter 'Y' or 'y' to restart, 'N' or 'n' to exit."
+ - "Would you like to play again? (Y/y = Yes, N/n = No): "
+ - Asking the user to enter 'Y' or 'y' to restart, 'N' or 'n' to exit the program.
