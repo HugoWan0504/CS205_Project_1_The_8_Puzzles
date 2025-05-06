@@ -3,6 +3,7 @@
 #include "solver.h"
 using namespace std;
 
+// Print welcome screen
 void printIntro() {
     cout << "Welcome to the 8-Puzzle Solver!\n";
     cout << "Choose an option:\n";
@@ -10,11 +11,12 @@ void printIntro() {
     cout << "2. Enter your own puzzle\n";
 }
 
+// Show algorithm options
 void printAlgorithmMenu() {
     cout << "\nChoose a search algorithm:\n";
-    cout << "1. Uniform Cost Search\n";
-    cout << "2. A* with Misplaced Tile heuristic\n";
-    cout << "3. A* with Manhattan Distance heuristic\n";
+    cout << "1. Uniform Cost Search (UCS)\n";
+    cout << "2. A* with Misplaced Tile heuristic (AMT)\n";
+    cout << "3. A* with Manhattan Distance heuristic (AMD)\n";
 }
 
 int main() {
@@ -23,37 +25,44 @@ int main() {
     while (choice == 'Y' || choice == 'y') {
         Puzzle puzzle;
 
-        // Ask the user to choose a puzzle type
+        // --- Puzzle Selection ---
         printIntro();
-
         int inputType;
-        cin >> inputType;
+        cout << "Enter 1 or 2: ";
+        while (!(cin >> inputType) || (inputType != 1 && inputType != 2)) {
+            cout << "Invalid input. Please enter 1 (default) or 2 (custom): ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
 
-        // Default puzzle
+        // Load puzzle based on user choice
         if (inputType == 1) {
             puzzle.loadDefault();
-        } else { // Custom Puzzle
-            // Check if the custom puzzle is valid
-            while (!puzzle.loadFromInput()) { 
-                // return invalid puzzle message if not
+        } else {
+            while (!puzzle.loadFromInput()) {
                 cout << "Invalid puzzle. Please try again.\n";
             }
         }
 
-        // Print the Initial / Current Puzzle State
+        // Display current puzzle
         puzzle.printState();
 
-        // Ask the user to choose a search algorithm
+        // --- Algorithm Selection ---
         printAlgorithmMenu();
-
         int algo;
-        cin >> algo;
-        SearchType type = static_cast<SearchType>(algo);
+        cout << "Enter 1, 2, or 3: ";
+        while (!(cin >> algo) || (algo < 1 || algo > 3)) {
+            cout << "Invalid input. Please enter 1, 2, or 3: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
 
+        // Create and run solver
+        SearchType type = static_cast<SearchType>(algo);
         Solver solver(puzzle, type);
         solver.solve();
-        // solver.printSummary();
 
+        // --- Replay Option ---
         cout << "\nWould you like to play again? (Y/y = Yes, N/n = No): ";
         cin >> choice;
         cout << "---------------------------------------------\n";
