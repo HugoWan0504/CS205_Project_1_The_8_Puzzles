@@ -1,3 +1,38 @@
+#include <bits/stdc++.h>
+#include "solver.h"
+#include "puzzle.h"
+#include "heuristics.h"
+#include "utils.h"
+using namespace std;
+
+// Coal state
+const vector<vector<int>> GOAL_STATE = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 0}
+};
+
+// locates the blank tile 0
+std::pair<int, int> findBlank(const std::vector<std::vector<int>>& state) {
+    for (int i = 0; i < 3; ++i)
+        for (int j = 0; j < 3; ++j)
+            if (state[i][j] == 0)
+                return {i, j};
+    return {-1, -1}; // fallback if not found
+}
+
+// list of 4 movement directions: up, down, left, right
+const std::vector<std::pair<int, int>> directions = {
+    {-1, 0}, {1, 0}, {0, -1}, {0, 1}
+};
+
+//  checks if the new tile position is still inside the grid
+bool isValid(int row, int col) {
+    return row >= 0 && row < 3 && col >= 0 && col < 3;
+}
+
+
+
 void Solver::solve() {
     vector<vector<int>> initial = puzzle.getState();
 

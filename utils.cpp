@@ -29,3 +29,13 @@ bool isUniqueDigitsZeroToEight(const vector<int>& values) {
 
     return true;
 }
+
+// convert the puzzle state to a string
+std::string serializeState(const std::vector<std::vector<int>>& state) {
+    std::string result;
+    for (const auto& row : state)
+        for (int val : row)
+            result += std::to_string(val);
+    return result;
+}
+
