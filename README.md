@@ -21,9 +21,9 @@
 * 1. The puzzle must include all numbers from 0 to 8 exactly once.
 * 2. When entering the numbers, each row should have exactly three values, and the number inputs must be separated by spaces.
 * A valid puzzle should look like this:
-  - Enter the first row: 1 2 3
-  - Enter the second row: 4 0 5
-  - Enter the third row: 6 7 8
+  - Enter the first row:   {1 2 3}
+  - Enter the second row:  {4 0 5}
+  - Enter the third row:   {6 7 8}
 * If the input does NOT meet these requirements, it will be considered invalid, which the program will print an "Invalid Puzzle" message and restart the setup process.
 * Here are the example of invalid puzzles:
  - Missing a number: no 0
@@ -43,9 +43,9 @@
 * 1. The best puzzle state chosen to expand at each step
 * 2. The corresponding values of g(n), h(n), and f(n) for A*-based searches
 * 3. The final goal state, which is unified and look like this:
-  - The first row: 1 2 3
-  - The second row: 4 5 6
-  - The third row: 7 8 0
+  - The first row:   {1 2 3}
+  - The second row:  {4 5 6}
+  - The third row:   {7 8 0}
 * At the end of the game, users will see a summary including:
 * 1. Solution depth (number of moves from initial to goal)
 * 2. Total number of nodes expanded

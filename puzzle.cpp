@@ -5,7 +5,7 @@ Puzzle::Puzzle() {
     state = vector<vector<int>>(3, vector<int>(3, 0));
 }
 
-// default puzzle
+// my default puzzle
 void Puzzle::loadDefault() {
     state = {
         {1, 2, 3},
@@ -23,7 +23,7 @@ bool Puzzle::isValid(const vector<int>& flatInput) const {
     unordered_set<int> seen;
     for (int num : flatInput) {
         // return invalid if found a number is 
-        // lower than 0 or more than 8 or duplicated
+        // lower than 0 or more than 8 or is duplicated
         if (num < 0 || num > 8 || seen.count(num)) return false;
         seen.insert(num);
     }
@@ -59,7 +59,7 @@ bool Puzzle::loadFromInput() {
     return true;
 }
 
-// log puzzle block states with input
+// log puzzle block states with input in the terminal
 void Puzzle::printState() const {
     cout << "\nPuzzle state:\n";
     for (const auto& row : state) {
@@ -71,6 +71,7 @@ void Puzzle::printState() const {
     cout << endl;
 }
 
+// vectorize getting a state
 vector<vector<int>> Puzzle::getState() const {
     return state;
 }

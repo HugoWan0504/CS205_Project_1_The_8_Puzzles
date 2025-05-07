@@ -25,7 +25,7 @@ int misplacedTile(const vector<vector<int>>& state) {
         for (int j = 0; j < 3; ++j)
             if (state[i][j] != 0 && state[i][j] != GOAL[i][j])
                 count++; // h(n) += 1 in AMT
-    return count; // h(n)
+    return count; // return h(n)
 }
 
 // A* + Manhattan Distances
@@ -41,5 +41,5 @@ int manhattanDistance(const vector<vector<int>>& state) {
             }
         }
     }
-    return total; // h(n)
+    return total; // return h(n)
 }

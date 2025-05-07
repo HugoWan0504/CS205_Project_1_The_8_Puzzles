@@ -13,7 +13,7 @@ public:
     vector<vector<int>> getState() const;
 
 private:
-    vector<vector<int>> state; // 3x3 grid
+    vector<vector<int>> state;
     bool isValid(const vector<int>& flatInput) const;
 };
 

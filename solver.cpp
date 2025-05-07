@@ -5,7 +5,7 @@
 #include "utils.h"
 using namespace std;
 
-// Coal state
+// Goal state
 const vector<vector<int>> GOAL_STATE = {
     {1, 2, 3},
     {4, 5, 6},
@@ -18,7 +18,7 @@ std::pair<int, int> findBlank(const std::vector<std::vector<int>>& state) {
         for (int j = 0; j < 3; ++j)
             if (state[i][j] == 0)
                 return {i, j};
-    return {-1, -1}; // fallback if not found
+    return {-1, -1}; // return error
 }
 
 // list of 4 movement directions: up, down, left, right
@@ -37,7 +37,7 @@ Solver::Solver(const Puzzle& puzzle, SearchType type)
 void Solver::solve() {
     vector<vector<int>> initial = puzzle.getState();
 
-    // Priority queue (min-heap) for A*/UCS based on f(n) = g(n) + h(n)
+    // Priority queue (min-heap) based on f(n) = g(n) + h(n)
     priority_queue<Node*, vector<Node*>, CompareNodes> frontier;
     unordered_set<string> visited;
 
@@ -61,7 +61,7 @@ void Solver::solve() {
         frontier.pop();
 
         string currKey = serializeState(current->state);
-        if (visited.count(currKey)) continue; // Skip repeated states
+        if (visited.count(currKey)) continue; // avoid looping forever
 
         visited.insert(currKey);
         nodesExpanded++;
@@ -77,7 +77,7 @@ void Solver::solve() {
         }
         cout << "\n";
 
-        // Check if reach the goal
+        // Check if the goal is reached
         if (current->state == GOAL_STATE) {
             cout << "Goal state reached!\n\n";
 

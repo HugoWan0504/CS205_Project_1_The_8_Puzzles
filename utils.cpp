@@ -21,8 +21,9 @@ bool isUniqueDigitsZeroToEight(const vector<int>& values) {
 
     unordered_set<int> seen;
     for (int num : values) {
+        // invalid number or duplicate
         if (num < 0 || num > 8 || seen.count(num)) {
-            return false; // invalid number or duplicate
+            return false;
         }
         seen.insert(num);
     }

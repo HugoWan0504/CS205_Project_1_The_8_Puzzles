@@ -68,6 +68,7 @@ int main() {
         cout << "---------------------------------------------\n";
     }
 
+    // Exit message
     cout << "Thanks for playing. Exiting now.\n";
     return 0;
 }
