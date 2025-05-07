@@ -1,7 +1,7 @@
 # CS205 Project 1 The 8 Puzzles by Hugo Wan, 862180666, twan012
 
 ### Content
-* PDF report: (link, add in later)
+* PDF report: https://github.com/HugoWan0504/CS205_Project_1_The_8_Puzzles/blob/main/CS205_Project%201%20The%208%20Puzzles%20-%20Hugo%20Wan.pdf
 * Current github link: https://github.com/HugoWan0504/CS205_Project_1_The_8_Puzzles
 
 ### How to play?
