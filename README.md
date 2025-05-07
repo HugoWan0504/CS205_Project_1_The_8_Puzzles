@@ -7,7 +7,7 @@
 ### How to play?
 
 # 1. Getting Started
-* Open terminal and compile the code using the following command: g++ -o eight_puzzle main.cpp
+* Open terminal and compile the code using the following command: make
 * Run the program with: ./eight_puzzle
 
 # 2. Interface - Choosing a Puzzle

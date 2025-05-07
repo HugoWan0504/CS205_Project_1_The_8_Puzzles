@@ -36,10 +36,10 @@ bool Puzzle::loadFromInput() {
 
     // log user's inputs of the rows
     vector<int> flatInput;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');  // clear input buffer
     for (int i = 0; i < 3; ++i) {
         cout << "Row " << (i + 1) << ": ";
         string line;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');  // clear input buffer
         getline(cin, line);
         stringstream ss(line);
         int num;

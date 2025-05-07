@@ -31,7 +31,8 @@ bool isValid(int row, int col) {
     return row >= 0 && row < 3 && col >= 0 && col < 3;
 }
 
-
+Solver::Solver(const Puzzle& puzzle, SearchType type)
+    : puzzle(puzzle), strategy(type) {}
 
 void Solver::solve() {
     vector<vector<int>> initial = puzzle.getState();
